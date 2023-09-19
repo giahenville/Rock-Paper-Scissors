@@ -3,7 +3,7 @@
 // Computer randomly selects rock, paper or scissors
 function getComputerChoice(){
     let options = ["rock", "paper", "scissors"];
-    return options[ (Math.floor(Math.random() * options.length -1)) ]; 
+    return options[ (Math.floor(Math.random() * options.length)) ]; 
 }
 
 // Compare both selections
