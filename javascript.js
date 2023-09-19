@@ -4,27 +4,31 @@
 function getComputerChoice(){
     let options = ["rock", "paper", "scissors"];
     return options[ (Math.floor(Math.random() * options.length -1)) ]; 
-    
-   
 }
-// getComputerChoice();
 
 // Compare both selections
-// let computerSelection = getComputerChoice();
-function firstRound(){
-    let playerSelection = prompt("Choose rock, paper, or scissors: ");
-    let computerSelection = getComputerChoice();
-    console.log(computerSelection);
-    // tie
-    if (playerSelection.toLowerCase() === computerSelection){
-        return;
+function firstRound(playerSelection, computerSelection){
+    playerSelection = playerSelection.toLowerCase();
+    //in case of both players choosing the same choice 
+    if (playerSelection === computerSelection){
+        return "Draw";
+     // Player beats computer
+    }else if (playerSelection === "rock" && computerSelection === "scissors" ||
+     playerSelection === "scissors" && computerSelection == "paper" || 
+     playerSelection === "paper" && computerSelection === "rock" ){
+        return "You win! " + playerSelection + " beats " + computerSelection + "!";
+    }else{
+        return "You lose! " + computerSelection + " beats " + playerSelection + "!";
     }
     
-    // rock beats scissors
+}
+
+console.log(firstRound("PAPER", "SCISSORS"));
+    
+    
     // rock loses to paper 
     // paper beats rock
     // paper loses to scissors
     // scissors beats paper
     // scissors loses to rock
-}
-firstRound();
+
