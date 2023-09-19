@@ -23,7 +23,10 @@ function firstRound(playerSelection, computerSelection){
     
 }
 
-console.log(firstRound("PAPER", "SCISSORS"));
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+
+console.log(firstRound(playerSelection, computerSelection));
     
     
     // rock loses to paper 
