@@ -53,6 +53,16 @@ body{
     border: none;
 }
 
+.playAgainBtn{
+    margin-top: 50px;
+}
+
+button:hover{
+    transition: 0.2s;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 button img{
-    border-radius: 50px;
+    border-radius: 100px;
 }
