@@ -10,31 +10,43 @@ let computerScore = 0;
 
 //create container for results to display to user
 const resultsContainer = document.getElementById("resultsContainer");
+const resultClass = document.getElementById("result");
+const roundNum = document.getElementById("roundNum");
+
+let round = 0;
 
 function firstRound(playerSelection, computerSelection){
     let result;
     //in case of both players choosing the same choice 
     if (playerSelection === computerSelection){
+        round += 1;
+        
         result = "Draw! Your score is: " + playerScore 
         + ". Computer score is:  " + computerScore + ". ";
     // Player beats computer
     }else if (playerSelection === "rock" && computerSelection === "scissors" 
     || playerSelection === "scissors" && computerSelection == "paper" 
     || playerSelection === "paper" && computerSelection === "rock" ){
+        round += 1;
+    
         playerScore += 1;
         result = "You win, " + playerSelection + " beats " 
         + computerSelection + "!" + " Your score is: " + playerScore 
         + ". Computer score is:  " + computerScore + ". ";
     //Computer beats player
     }else{
+        round += 1;
+        
         computerScore += 1;
         result = "You lose, " + computerSelection + " beats " 
         + playerSelection + "!" + " Your score is: " + playerScore 
         + ". Computer score is:  " + computerScore + ". ";
-    }   
+    }  
+    console.log(round);
+    roundNum.innerText = "Round: " + round; 
     
     // Display results of each round
-    resultsContainer.innerHTML = result;
+    console.log(resultClass.textContent = result);
 
     /*Returns if the player is the winner or the loser 
     once either player reaches 5 points*/
@@ -47,21 +59,25 @@ function firstRound(playerSelection, computerSelection){
         }
 
         let output = `${winnerLoser()} Your final score is: ${playerScore}!`;
-        resultsContainer.innerText = output;
+        resultClass.innerText = output;
 
         const playAgainBtn = document.createElement("button");
         playAgainBtn.textContent = "Play Again";
         playAgainBtn.addEventListener("click", () => {
             computerScore = 0;
             playerScore = 0;
-            resultsContainer.innerHTML = "";
+            round = 0;
+            resultClass.innerHTML = "";
+            roundNum.innerHTML = "";
+            resultsContainer.removeChild(playAgainBtn);
         });
         resultsContainer.appendChild(playAgainBtn);
+        
     }
 }
 
-/*declare playGame variable in order to send playerSelection and
-computerSelection into firstRound function when a button is pressed */
+/*sends playerSelection and computerSelection 
+into firstRound function when a button is pressed */
 const playGame = (playerSelection) => {
     // Stop the game if either player's score is 5
     if (computerScore === 5 || playerScore === 5){
@@ -70,6 +86,7 @@ const playGame = (playerSelection) => {
     let computerSelection = getComputerChoice();
     firstRound(playerSelection, computerSelection);
 }
+
 
 //makes buttons work
 const rockBtn = document.getElementById("rockBtn");
