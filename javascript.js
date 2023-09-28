@@ -45,8 +45,8 @@ function firstRound(playerSelection, computerSelection){
     }  
     roundNum.innerText = "Round: " + round; 
     //scores
-    playerContainer.textContent = "Your Score: \n" + playerScore;
-    computerContainer.textContent = "Computer Score: \n" + computerScore;
+    playerContainer.textContent = "Player Score: " + playerScore;
+    computerContainer.textContent = "Computer \nScore: " + computerScore;
     // Display results of each round
     resultClass.textContent = result;
 
@@ -69,6 +69,7 @@ function firstRound(playerSelection, computerSelection){
 
         const playAgainBtn = document.createElement("button");
         playAgainBtn.textContent = "Play Again";
+        playAgainBtn.className = "playAgainBtn";
         playAgainBtn.addEventListener("click", () => {
             computerScore = 0;
             playerScore = 0;
