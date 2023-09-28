@@ -2,14 +2,41 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     background-color: rgb(255, 241, 240);
+    font-family: Palatino, "URW Palladio L", serif;
+    color: #3C3C3C;
 }
 
 #imgContainer > img{
     width: 350px;
     height: auto;
+    border-radius: 150px;
 }
 
+#scoreContainer{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+#playerContainer,
+#computerContainer{
+    color: rgb(226, 159, 180);
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 40px;
+}
+
+#roundNum{
+    color: rgb(131, 191, 131);
+    font-size: 30px;
+    margin: 0;
+}
+
+#result{
+    font-size: 20px;
+}
 #resultsContainer{
     display: flex;
     flex-direction: column;
@@ -18,7 +45,7 @@ body{
 
 .buttons{
     display: flex;
-    
+    align-items: stretch;
 }
 
 .buttons > button{
