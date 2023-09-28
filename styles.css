@@ -1,0 +1,31 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(255, 241, 240);
+}
+
+#imgContainer > img{
+    width: 350px;
+    height: auto;
+}
+
+#resultsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons{
+    display: flex;
+    
+}
+
+.buttons > button{
+    background-color: rgb(255, 241, 240) ;
+    border: none;
+}
+
+button img{
+    border-radius: 50px;
+}
