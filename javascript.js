@@ -48,6 +48,15 @@ function firstRound(playerSelection, computerSelection){
 
         let output = `${winnerLoser()} Your final score is: ${playerScore}!`;
         resultsContainer.innerText = output;
+
+        const playAgainBtn = document.createElement("button");
+        playAgainBtn.textContent = "Play Again";
+        playAgainBtn.addEventListener("click", () => {
+            computerScore = 0;
+            playerScore = 0;
+            resultsContainer.innerHTML = "";
+        });
+        resultsContainer.appendChild(playAgainBtn);
     }
 }
 
