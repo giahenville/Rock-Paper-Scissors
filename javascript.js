@@ -20,7 +20,7 @@ function firstRound(playerSelection, computerSelection){
     //in case of both players choosing the same choice 
     if (playerSelection === computerSelection){
         round += 1;
-        
+        newImage.src = "./images/loserRPS.jpg";
         result = "Draw! Your score is: " + playerScore 
         + ". Computer score is:  " + computerScore + ". ";
     // Player beats computer
@@ -28,7 +28,7 @@ function firstRound(playerSelection, computerSelection){
     || playerSelection === "scissors" && computerSelection == "paper" 
     || playerSelection === "paper" && computerSelection === "rock" ){
         round += 1;
-    
+        newImage.src = "./images/winnerRPS.jpeg";
         playerScore += 1;
         result = "You win, " + playerSelection + " beats " 
         + computerSelection + "!" + " Your score is: " + playerScore 
@@ -36,26 +36,27 @@ function firstRound(playerSelection, computerSelection){
     //Computer beats player
     }else{
         round += 1;
-        
+        newImage.src = "./images/loserRPS.jpg";
         computerScore += 1;
         result = "You lose, " + computerSelection + " beats " 
         + playerSelection + "!" + " Your score is: " + playerScore 
         + ". Computer score is:  " + computerScore + ". ";
     }  
-    console.log(round);
     roundNum.innerText = "Round: " + round; 
     
     // Display results of each round
-    console.log(resultClass.textContent = result);
+    resultClass.textContent = result;
 
     /*Returns if the player is the winner or the loser 
     once either player reaches 5 points*/
     if (computerScore === 5 || playerScore === 5){
+        newImage.src = "./images/startRPS.jpg";
         const winnerLoser = () => {
             if (playerScore === 5){
                 return "You are the winner!";
             }
             return "Loser! The computer wins!";
+          
         }
 
         let output = `${winnerLoser()} Your final score is: ${playerScore}!`;
@@ -69,6 +70,7 @@ function firstRound(playerSelection, computerSelection){
             round = 0;
             resultClass.innerHTML = "";
             roundNum.innerHTML = "";
+            // newImage.src = "./images/startRPS.jpg";
             resultsContainer.removeChild(playAgainBtn);
         });
         resultsContainer.appendChild(playAgainBtn);
@@ -87,19 +89,27 @@ const playGame = (playerSelection) => {
     firstRound(playerSelection, computerSelection);
 }
 
+//image at top page to match with buttons clicked
+const currentImage = document.getElementById("imgContainer");
+const newImage = document.createElement("img");
+newImage.src = "./images/startRPS.jpg";
+currentImage.appendChild(newImage);
 
 //makes buttons work
 const rockBtn = document.getElementById("rockBtn");
+rockBtn.innerHTML = '<img src =  "./images/rockRPS.jpg">';
 rockBtn.addEventListener("click", () => {
     playGame("rock")
 });
 
 const paperBtn = document.getElementById("paperBtn");
+paperBtn.innerHTML = '<img src =  "./images/paperRPS.jpg">';
 paperBtn.addEventListener("click", () => {
     playGame("paper")
 });
 
 const scissorsBtn = document.getElementById("scissorsBtn");
+scissorsBtn.innerHTML = '<img src =  "./images/scissorsRPS.jpg">';
 scissorsBtn.addEventListener("click", () => {
     playGame("scissors")
 });
