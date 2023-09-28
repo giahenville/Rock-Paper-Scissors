@@ -8,6 +8,10 @@ function getComputerChoice(){
 let playerScore = 0;
 let computerScore = 0;
 
+//create container for scores
+const playerContainer = document.getElementById("playerContainer");
+const computerContainer = document.getElementById("computerContainer");
+
 //create container for results to display to user
 const resultsContainer = document.getElementById("resultsContainer");
 const resultClass = document.getElementById("result");
@@ -21,8 +25,7 @@ function firstRound(playerSelection, computerSelection){
     if (playerSelection === computerSelection){
         round += 1;
         newImage.src = "./images/loserRPS.jpg";
-        result = "Draw! Your score is: " + playerScore 
-        + ". Computer score is:  " + computerScore + ". ";
+        result = "Draw!";
     // Player beats computer
     }else if (playerSelection === "rock" && computerSelection === "scissors" 
     || playerSelection === "scissors" && computerSelection == "paper" 
@@ -31,35 +34,37 @@ function firstRound(playerSelection, computerSelection){
         newImage.src = "./images/winnerRPS.jpeg";
         playerScore += 1;
         result = "You win, " + playerSelection + " beats " 
-        + computerSelection + "!" + " Your score is: " + playerScore 
-        + ". Computer score is:  " + computerScore + ". ";
+        + computerSelection + "!";
     //Computer beats player
     }else{
         round += 1;
         newImage.src = "./images/loserRPS.jpg";
         computerScore += 1;
         result = "You lose, " + computerSelection + " beats " 
-        + playerSelection + "!" + " Your score is: " + playerScore 
-        + ". Computer score is:  " + computerScore + ". ";
+        + playerSelection + "!";
     }  
     roundNum.innerText = "Round: " + round; 
-    
+    //scores
+    playerContainer.textContent = "Your Score: \n" + playerScore;
+    computerContainer.textContent = "Computer Score: \n" + computerScore;
     // Display results of each round
     resultClass.textContent = result;
 
     /*Returns if the player is the winner or the loser 
     once either player reaches 5 points*/
     if (computerScore === 5 || playerScore === 5){
-        newImage.src = "./images/startRPS.jpg";
+        // newImage.src = "./images/startRPS.jpg";
         const winnerLoser = () => {
             if (playerScore === 5){
+                newImage.src = "./images/winnerRPS.jpeg";
                 return "You are the winner!";
             }
+            newImage.src = "./images/loserRPS.jpg";
             return "Loser! The computer wins!";
           
         }
-
-        let output = `${winnerLoser()} Your final score is: ${playerScore}!`;
+    
+        let output = `${winnerLoser()}!`;
         resultClass.innerText = output;
 
         const playAgainBtn = document.createElement("button");
@@ -70,7 +75,9 @@ function firstRound(playerSelection, computerSelection){
             round = 0;
             resultClass.innerHTML = "";
             roundNum.innerHTML = "";
-            // newImage.src = "./images/startRPS.jpg";
+            playerContainer.textContent = " ";
+            computerContainer.textContent = " ";
+            newImage.src = "./images/startRPS.jpg";
             resultsContainer.removeChild(playAgainBtn);
         });
         resultsContainer.appendChild(playAgainBtn);
