@@ -32,6 +32,43 @@ body{
     color: rgb(131, 191, 131);
     font-size: 30px;
     margin: 0;
+
+}
+
+.computerGif{
+    width: 100px;
+}
+
+.bubble{
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    color: #3C3C3C;
+    border-radius: 3px;
+    margin-left: 20px;
+    font-size: 30px;
+}
+
+.bubble::after{
+    content: "";
+    display: block;
+    position: absolute;
+
+    left: -15px;
+    top: 15px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom:  8px solid transparent;
+    border-right: 15px solid #fff;
+}
+
+#computerGifContainer{
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 #result{
@@ -41,6 +78,7 @@ body{
 #resultsContainer{
     display: flex;
     flex-direction: column;
+    width: 100%;
     align-items: center;
 }
 

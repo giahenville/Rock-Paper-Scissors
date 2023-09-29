@@ -11,7 +11,10 @@ let computerScore = 0;
 //create container for scores
 const playerContainer = document.getElementById("playerContainer");
 const computerContainer = document.getElementById("computerContainer");
-
+//create computer gif and speech bubble
+const computerGifContainer = document.getElementById("computerGifContainer");
+const computerGif = document.createElement("img");
+const bubble = document.createElement("p");
 //create container for results to display to user
 const resultsContainer = document.getElementById("resultsContainer");
 const resultClass = document.getElementById("result");
@@ -44,9 +47,18 @@ function firstRound(playerSelection, computerSelection){
         + playerSelection + "!";
     }  
     roundNum.innerText = "Round: " + round; 
+
+    computerGif.src = "./images/computer.gif";
+    computerGif.className = "computerGif";
+    // computerGifContainer.appendChild(computerGif); 
+    bubble.textContent = computerSelection;
+    bubble.className = "bubble";
+    computerGifContainer.appendChild(computerGif);
+    computerGifContainer.appendChild(bubble); 
     //scores
     playerContainer.textContent = "Player Score: " + playerScore;
     computerContainer.textContent = "Computer \nScore: " + computerScore;
+    computerGif.src = "./images/computer.gif";
     // Display results of each round
     resultClass.textContent = result;
 
