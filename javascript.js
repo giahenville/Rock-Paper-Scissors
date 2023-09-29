@@ -75,7 +75,8 @@ function firstRound(playerSelection, computerSelection){
             playerScore = 0;
             round = 0;
             resultClass.innerHTML = "";
-            roundNum.innerHTML = "";
+            computerGifContainer.innerHTML = "";
+            roundNum.innerHTML = " First to get 5 points wins!";
             playerContainer.textContent = " ";
             computerContainer.textContent = " ";
             newImage.src = "./images/startRPS.jpg";
